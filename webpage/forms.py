@@ -19,7 +19,7 @@ class PostForm(forms.ModelForm):
                 'placeholder':'Blog Body',
                 'rows':25
             }),
-            'category':forms.Select(choices=['Family','Financial','Food','Python & Django','Traveling','Video Games'],attrs={
+            'category':forms.Select(choices=[('Family','Family'),('Financial','Financial'),('Food','Food'),('Python & Django','Python & Django'),('Traveling','Traveling'),('Video Games','Video Games')],attrs={
                 'class':'form-control',
             }),
         }
