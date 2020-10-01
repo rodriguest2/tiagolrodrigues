@@ -1,0 +1,62 @@
+{%extends 'base.html'%}
+{%load static%}
+
+
+{%block nav%}
+<li><a href="{% url 'index' %}">Home</a></li>
+<li><a href="{% url 'projects' %}">Projects</a></li>
+<li><a href="{% url 'services' %}">Services</a></li>
+<li><a href="{% url 'post_list' %}">Blog</a></li>
+<li><a href="{% url 'contact' %}">Contact</a></li>
+{%if user.is_authenticated%}
+<li class="colorlib-active"><a href="{% url 'logout' %}">Log Out</a></li>
+<div class="container">
+  <li><a href="{% url 'profile' %}" style="color: #6c757d;">Profile</a></li>
+  <li><a href="{% url 'password' %}" style="color: #6c757d;">Password</a></li>
+</div>
+{%else%}
+<li class="colorlib-active"><a href="{% url 'login' %}">Login</a></li>
+{%endif%}
+{%endblock%}
+
+
+{%block body%}
+
+<div id="colorlib-main">
+  <section class="ftco-section ftco-no-pt ftco-no-pb">
+    <div class="container px-md-0">
+      <div class="row d-flex no-gutters">
+        <div class="col-lg-12 col-md-7 order-md-last d-flex align-items-stretch">
+          <div class="contact-wrap w-100 p-md-5 p-4">
+            {%if not user.is_authenticated%}
+            <h1 class="mb-4">Please Login</h1>
+            <form method="POST" id="contactForm" name="contactForm" class="contactForm" novalidate="novalidate">
+              {% csrf_token %}
+              <div class="col-md-12">
+                {%for item in form%}
+                <div class="form-group">
+                  {{item}}
+                </div>
+                {%endfor%}
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <a><input type="submit" value="Login" class="unique-btn" style="background: black;"></a>
+                </div>
+                <h4>Or</h4>
+                <div class="form-group">
+                  <a href="{%url 'register'%}"><input type="button" value="Register Now" class="unique-btn" style="background: black;"></a>
+                </div>
+              </div>
+            </form>
+            {%else%}
+            <h2 class="mb-4">You are already logged in</h2>
+            {%endif%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{%endblock%}

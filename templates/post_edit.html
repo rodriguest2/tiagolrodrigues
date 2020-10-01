@@ -1,0 +1,68 @@
+{%extends 'base.html'%}
+{%load static%}
+
+
+{%block nav%}
+<li><a href="{% url 'index' %}">Home</a></li>
+<li><a href="{% url 'projects' %}">Projects</a></li>
+<li><a href="{% url 'services' %}">Services</a></li>
+<li class="colorlib-active"><a href="{% url 'post_list' %}">Blog</a>
+  {%if user.is_authenticated%}
+  &nbsp;&nbsp;-&nbsp;&nbsp;<a href="{%url 'post_create'%}"">Create Post</a>
+  {%endif%}
+</li>
+<div class="container">
+  <li><a href="{%url 'category' 'Family'%}" style="color: #6c757d;">Family</a></li>
+  <li><a href="{%url 'category' 'Financial'%}" style="color: #6c757d;">Financial</a></li>
+  <li><a href="{%url 'category' 'Food'%}" style="color: #6c757d;">Food</a></li>
+  <li><a href="{%url 'category' 'Python & Django'%}" style="color: #6c757d;">Python & Django</a></li>
+  <li><a href="{%url 'category' 'Traveling'%}" style="color: #6c757d;">Traveling</a></li>
+  <li><a href="{%url 'category' 'Video Games'%}" style="color: #6c757d;">Video Games</a></li>
+</div>
+<li><a href="{% url 'contact' %}">Contact</a></li>
+{%if user.is_authenticated%}
+<li><a href="{% url 'logout' %}">Log Out</a></li>
+<div class="container">
+  <li><a href="{% url 'profile' %}" style="color: #6c757d;">Profile</a></li>
+  <li><a href="{% url 'password' %}" style="color: #6c757d;">Password</a></li>
+</div>
+{%else%}
+<li><a href="{% url 'login' %}">Login</a></li>
+{%endif%}
+{%endblock%}
+
+
+{%block body%}
+{%if user.is_authenticated and user == post.author%}
+<div id="colorlib-main">
+  <section class="ftco-section ftco-no-pt ftco-no-pb">
+    <div class="container px-md-0">
+      <div class="row d-flex no-gutters">
+        <div class="col-lg-12 col-md-7 order-md-last d-flex align-items-stretch">
+          <div class="contact-wrap w-100 p-md-5 p-4">
+            <h3 class="mb-4 heading">Update Post</h3>
+            <form method="POST" enctype="multipart/form-data" id="contactForm" name="contactForm" class="contactForm" novalidate="novalidate">
+              {% csrf_token %}
+              <div class="col-md-12">
+                {%for item in form%}
+                <div class="form-group">
+                  {{item}}
+                </div>
+                {%endfor%}
+              </div>
+              <br>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="submit" value="Update Post" class="btn btn-primary">
+                  <div class="submitting"></div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{%endif%}
+{%endblock%}

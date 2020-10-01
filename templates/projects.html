@@ -1,0 +1,162 @@
+{%extends 'base.html'%}
+{%load static%}
+
+					{%block nav%}
+					<li><a href="{% url 'index' %}">Home</a></li>
+					<li class="colorlib-active"><a href="{% url 'projects' %}">Projects</a></li>
+					<li><a href="{% url 'services' %}">Services</a></li>
+					<li><a href="{% url 'post_list' %}">Blog</a></li>
+					<li><a href="{% url 'contact' %}">Contact</a></li>
+					{%if user.is_authenticated%}
+					<li><a href="{% url 'logout' %}">Log Out</a></li>
+					<div class="container">
+					  <li><a href="{% url 'profile' %}" style="color: #6c757d;">Profile</a></li>
+						<li><a href="{% url 'password' %}" style="color: #6c757d;">Password</a></li>
+					</div>
+					{%else%}
+					<li><a href="{% url 'login' %}">Login</a></li>
+					{%endif%}
+					{%endblock%}
+
+
+			{%block body%}
+			<div id="colorlib-main">
+				<section class="ftco-section ftco-no-pt ftco-no-pb">
+					<div class="container px-md-0">
+						<div class="row d-flex no-gutters">
+							<div class="col-md-12 portfolio-wrap">
+								<div class="row no-gutters align-items-center">
+									<a href="http://www.alphaonyx.com" class="col-md-6 img js-fullheight d-flex align-items-center justify-content-center" style="background-image: url({% static 'images/work-1.jpg' %});" target="_blank"></a>
+									<div class="col-md-6">
+										<div class="text pt-5 pl-0 px-lg-5 pl-md-4 ftco-animate">
+											<div class="px-4 px-lg-4">
+												<div class="desc">
+													<div class="top">
+														<span class="subheading">Doberman Pride</span>
+														<h2 class="mb-4"><a href="portfolio">Alpha Onyx</a></h2>
+													</div>
+													<div class="absolute">
+														<p>Sleek and powerful, possessing both a magnificent physique and keen intelligence, the Doberman Pinscher is one of dogkind's noblemen. This incomparably fearless and vigilant breed stands proudly among the world's finest protection dogs.</p>
+													</div>
+													<p><a href="http://www.alphaonyx.com" class="custom-btn" target="_blank">View Site</a></p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-12 portfolio-wrap">
+								<div class="row no-gutters align-items-center">
+									<a href="#" class="order-md-last col-md-6 img js-fullheight d-flex align-items-center justify-content-center" style="background-image: url({% static 'images/work-5.jpg' %});" target="_blank"></a>
+									<div class="col-md-6">
+										<div class="text pt-5 pl-0 px-lg-5 pl-md-4 ftco-animate">
+											<div class="px-4 px-lg-4">
+												<div class="desc  text-md-right">
+													<div class="top">
+														<span class="subheading">May the Schwartz be with you</span>
+														<h2 class="mb-4"><a href="{% url 'projects' %}">Schwartz Force</a></h2>
+													</div>
+													<div class="absolute">
+														<p>Delve into the world of watches with David while discovering cool and unique watches you've never seen before.</p>
+													</div>
+													<p><a href="http://www.schwartz-force.com" class="custom-btn" target="_blank">View Site</a></p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-12 portfolio-wrap">
+								<div class="row no-gutters align-items-center">
+									<a href="#" class="col-md-6 img js-fullheight d-flex align-items-center justify-content-center" style="background-image: url({% static 'images/work-6.jpg' %});" target="_blank"></a>
+									<div class="col-md-6">
+										<div class="text pt-5 pl-0 px-lg-5 pl-md-4 ftco-animate">
+											<div class="px-4 px-lg-4">
+												<div class="desc">
+													<div class="top">
+														<span class="subheading">Fancy Nails</span>
+														<h2 class="mb-4"><a href="{% url 'projects' %}">Nails by Annie</a></h2>
+													</div>
+													<div class="absolute">
+														<p>Nails always on point because your personality isn't the first thing people see.</p>
+													</div>
+													<p><a href="#" class="custom-btn" target="_blank">Coming Soon</a></p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-12 portfolio-wrap">
+								<div class="row no-gutters align-items-center">
+									<a href="#" class="col-md-6 order-md-last img js-fullheight d-flex align-items-center justify-content-center" style="background-image: url({% static 'images/work-3.jpg' %});" target="_blank"></a>
+									<div class="col-md-6">
+										<div class="text pt-5 px-md-5 ftco-animate">
+											<div class="px-4 px-lg-4">
+												<div class="desc text-md-right">
+													<div class="top">
+														<span class="subheading">Gumbo on Wheels</span>
+														<h2 class="mb-4"><a href="{% url 'projects' %}">Louisiana Boyz</a></h2>
+													</div>
+													<div class="absolute">
+														<p>Authentic Louisiana food brought straight to San Antonio.</p>
+													</div>
+													<p><a href="#" class="custom-btn" target="_blank">Coming Soon</a></p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-12 portfolio-wrap">
+								<div class="row no-gutters align-items-center">
+									<a href="#" class="col-md-6 img js-fullheight d-flex align-items-center justify-content-center" style="background-image: url({% static 'images/work-2.jpg' %});" target="_blank"></a>
+									<div class="col-md-6">
+										<div class="text pt-5 px-md-5 ftco-animate">
+											<div class="px-4 px-lg-4">
+												<div class="desc">
+													<div class="top">
+														<span class="subheading">Home Building</span>
+														<h2 class="mb-4"><a href="{% url 'projects' %}">Jorge Construction</a></h2>
+													</div>
+													<div class="absolute">
+														<p>At Jorge Construction, we are dedicated to providing you with outstanding value and quality. Family-owned and operated, we’ve spent over 20 years in Texas and are committed to a tradition of excellence. </p>
+													</div>
+													<p><a href="#" class="custom-btn" target="_blank">Coming Soon</a></p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-12 portfolio-wrap">
+								<div class="row no-gutters align-items-center">
+									<a href="#" class="col-md-6 order-md-last img js-fullheight d-flex align-items-center justify-content-center" style="background-image: url({% static 'images/work-4.jpg' %});" target="_blank"></a>
+									<div class="col-md-6">
+										<div class="text pt-5 px-md-5 ftco-animate">
+											<div class="px-4 px-lg-4">
+												<div class="desc text-md-right">
+													<div class="top">
+														<span class="subheading">Cycle Through Life</span>
+														<h2 class="mb-4"><a href="{% url 'projects' %}">Fabio Lozano</a></h2>
+													</div>
+													<div class="absolute">
+														<p>Enjoy the ride, the sights, and get fit while doing it.</p>
+													</div>
+													<p><a href="#" class="custom-btn" target="_blank">Coming Soon</a></p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+			{%endblock%}

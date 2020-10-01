@@ -1,0 +1,144 @@
+{%extends 'base.html'%}
+{%load static%}
+
+
+{%block nav%}
+<li><a href="{% url 'index' %}">Home</a></li>
+<li><a href="{% url 'projects' %}">Projects</a></li>
+<li><a href="{% url 'services' %}">Services</a></li>
+<li class="colorlib-active"><a href="{% url 'post_list' %}">Blog</a>
+  {%if user.is_authenticated%}
+  &nbsp;&nbsp;-&nbsp;&nbsp;<a href="{%url 'post_create'%}"">Create Post</a>
+  {%endif%}
+</li>
+<div class="container">
+  <li><a href="{%url 'category' 'Family'%}" style="color: #6c757d;">Family</a></li>
+  <li><a href="{%url 'category' 'Financial'%}" style="color: #6c757d;">Financial</a></li>
+  <li><a href="{%url 'category' 'Food'%}" style="color: #6c757d;">Food</a></li>
+  <li><a href="{%url 'category' 'Python & Django'%}" style="color: #6c757d;">Python & Django</a></li>
+  <li><a href="{%url 'category' 'Traveling'%}" style="color: #6c757d;">Traveling</a></li>
+  <li><a href="{%url 'category' 'Video Games'%}" style="color: #6c757d;">Video Games</a></li>
+</div>
+<li><a href="{% url 'contact' %}">Contact</a></li>
+{%if user.is_authenticated%}
+<li><a href="{% url 'logout' %}">Log Out</a></li>
+<div class="container">
+  <li><a href="{% url 'profile' %}" style="color: #6c757d;">Profile</a></li>
+  <li><a href="{% url 'password' %}" style="color: #6c757d;">Password</a></li>
+</div>
+{%else%}
+<li><a href="{% url 'login' %}">Login</a></li>
+{%endif%}
+{%endblock%}
+
+
+{%block body%}
+
+<div id="colorlib-main">
+  <section class="ftco-about img ftco-section ftco-no-pt ftco-no-pb" id="about-section">
+    <div class="container-fluid px-0">
+      <div class="row d-flex">
+        <div class="col-md-6 d-flex align-items-center">
+          <div class="text px-4 pt-5 pt-md-6 px-md-4 pr-md-5 ftco-animate">
+            <br>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="colorlib-main">
+  <section class="ftco-section ftco-no-pt ftco-no-pb" >
+    <div class="container px-md-0">
+      <div class="row d-flex no-gutters">
+        <div class="col-md-6 pricing">
+          <div href="{%url 'category' 'Family'%}" class="img w-100 d-flex" style="background-image: url({% static 'images/family.jpg' %});">
+            <div class="row no-gutters align-items-center">
+              <div class="text p-4 ftco-animate">
+                <br>
+                <h3 style="color: #ffc107;"><a href="{%url 'category' 'Family'%}">Family</a></h3>
+                <br>
+                <br>
+                <br>
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 pricing">
+          <div href="{%url 'category' 'Financial'%}" class="img w-100 d-flex" style="background-image: url({% static 'images/financial.jpg' %});">
+            <div class="row no-gutters align-items-center">
+              <div class="text p-4 ftco-animate">
+                <br>
+                <h3 style="color: #ffc107;"><a href="{%url 'category' 'Financial'%}">Financial</a></h3>
+                <br>
+                <br>
+                <br>
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 pricing">
+          <div href="{%url 'category' 'Food'%}" class="img w-100 d-flex" style="background-image: url({% static 'images/food.jpg' %});">
+            <div class="row no-gutters align-items-center">
+              <div class="text p-4 ftco-animate">
+                <br>
+                <h3 style="color: #ffc107;"><a href="{%url 'category' 'Food'%}">Food</a></h3>
+                <br>
+                <br>
+                <br>
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 pricing">
+          <div href="{%url 'category' 'Python & Django'%}" class="img w-100 d-flex" style="background-image: url({% static 'images/python.jpg' %});">
+            <div class="row no-gutters align-items-center">
+              <div class="text p-4 ftco-animate">
+                <br>
+                <h3 style="color: #ffc107;"><a href="{%url 'category' 'Python & Django'%}">Python & Django</a></h3>
+                <br>
+                <br>
+                <br>
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 pricing">
+          <div href="{%url 'category' 'Traveling'%}" class="img w-100 d-flex" style="background-image: url({% static 'images/travel.jpg' %});">
+            <div class="row no-gutters align-items-center">
+              <div class="text p-4 ftco-animate">
+                <br>
+                <h3 style="color: #ffc107;"><a href="{%url 'category' 'Traveling'%}">Traveling</a></h3>
+                <br>
+                <br>
+                <br>
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 pricing">
+          <div href="{%url 'category' 'Video Games'%}" class="img w-100 d-flex" style="background-image: url({% static 'images/vgames.jpg' %});">
+            <div class="row no-gutters align-items-center">
+              <div class="text p-4 ftco-animate">
+                <br>
+                <h3 style="color: #ffc107;"><a href="{%url 'category' 'Video Games'%}">Video Games</a></h3>
+                <br>
+                <br>
+                <br>
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{%endblock%}

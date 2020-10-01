@@ -1,0 +1,77 @@
+{%extends 'base.html'%}
+{%load static%}
+
+
+{%block nav%}
+<li><a href="{% url 'index' %}">Home</a></li>
+<li><a href="{% url 'projects' %}">Projects</a></li>
+<li><a href="{% url 'services' %}">Services</a></li>
+<li class="colorlib-active"><a href="{% url 'post_list' %}">Blog</a>
+  {%if user.is_authenticated%}
+  &nbsp;&nbsp;-&nbsp;&nbsp;<a href="{%url 'post_create'%}"">Create Post</a>
+  {%endif%}
+</li>
+<div class="container">
+  <li><a href="{%url 'category' 'Family'%}" style="color: #6c757d;">Family</a></li>
+  <li><a href="{%url 'category' 'Financial'%}" style="color: #6c757d;">Financial</a></li>
+  <li><a href="{%url 'category' 'Food'%}" style="color: #6c757d;">Food</a></li>
+  <li><a href="{%url 'category' 'Python & Django'%}" style="color: #6c757d;">Python & Django</a></li>
+  <li><a href="{%url 'category' 'Traveling'%}" style="color: #6c757d;">Traveling</a></li>
+  <li><a href="{%url 'category' 'Video Games'%}" style="color: #6c757d;">Video Games</a></li>
+</div>
+<li><a href="{% url 'contact' %}">Contact</a></li>
+{%if user.is_authenticated%}
+<li><a href="{% url 'logout' %}">Log Out</a></li>
+<div class="container">
+  <li><a href="{% url 'profile' %}" style="color: #6c757d;">Profile</a></li>
+  <li><a href="{% url 'password' %}" style="color: #6c757d;">Password</a></li>
+</div>
+{%else%}
+<li><a href="{% url 'login' %}">Login</a></li>
+{%endif%}
+{%endblock%}
+
+
+{%block body%}
+
+<div id="colorlib-main">
+  <section class="ftco-section ftco-no-pt ftco-no-pb">
+    <div class="container px-md-0">
+      <div class="row d-flex no-gutters">
+        {%if category_posts%}
+        {%for post in category_posts%}
+        <div class="col-md-4 portfolio-wrap-2">
+          <div class="row no-gutters align-items-center">
+            <div href="#" class="img w-100 js-fullheight d-flex align-items-center" style="background-image: url({{post.post_img.url}});">
+              <div class="text p-4 p-md-5 ftco-animate">
+                <div class="desc">
+                  <div class="top">
+                    <span class="subheading outline">{{post.author.first_name}} {{post.author.last_name}}</span>
+                    <span class="subheading outline">{{post.post_date}}</span>
+                    <h2 class="mb-4 outline"><a href="single.html">{{post.title|truncatechars:40}}</a></h2>
+                    <p class="outline" style="color: #fff;">{{post.body|truncatechars:100}}</p>
+                    <div class="outline"><span class="fa fa-comment"></span> {{post.comments.count}} {%if user.is_authenticated and user == post.author%}&nbsp;&nbsp;&nbsp;&nbsp;<a href="{%url 'post_update' post.pk%}"><span class="fa fa-pencil"></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{%url 'post_delete' post.pk%}"><span class="fa fa-trash"></span></a>{%endif%}</div>
+                    <br>
+                    <a href="{%url 'post_detail' post.pk%}" class="custom-btn">View Post</a>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {%endfor%}
+        {%else%}
+        <div class="container">
+          <br>
+          <br>
+          <h1 class="heading">No posts available for this page yet.</h1>
+        </div>
+        {%endif%}
+
+      </div>
+    </div>
+  </section>
+</div>
+
+{%endblock%}

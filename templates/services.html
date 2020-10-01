@@ -1,0 +1,62 @@
+{%extends 'base.html'%}
+{%load static%}
+
+					{%block nav%}
+					<li><a href="{% url 'index' %}">Home</a></li>
+					<li><a href="{% url 'projects' %}">Projects</a></li>
+					<li class="colorlib-active"><a href="{% url 'services' %}">Services</a></li>
+					<li><a href="{% url 'post_list' %}">Blog</a></li>
+					<li><a href="{% url 'contact' %}">Contact</a></li>
+					{%if user.is_authenticated%}
+					<li><a href="{% url 'logout' %}">Log Out</a></li>
+					<div class="container">
+					  <li><a href="{% url 'profile' %}" style="color: #6c757d;">Profile</a></li>
+						<li><a href="{% url 'password' %}" style="color: #6c757d;">Password</a></li>
+					</div>
+					{%else%}
+					<li><a href="{% url 'login' %}">Login</a></li>
+					{%endif%}
+					{%endblock%}
+
+
+			{%block body%}
+			<div id="colorlib-main">
+				<section class="ftco-section ftco-no-pt ftco-no-pb" >
+					<div class="container px-md-0">
+						<div class="row d-flex no-gutters">
+							<div class="col-md-6 pricing">
+								<div class="row no-gutters align-items-center">
+									<div href="#" class="img w-100 js-fullheight d-flex" style="background-image: url({% static 'images/dev.jpg' %});">
+										<div class="text p-4 ftco-animate">
+											<h3 style="color: #ffc107;"><br>Web Development</h3>
+											<ul>
+												<li><span style="color: #ffc107;">&#9670  Desktop & Mobile</span></li>
+												<li><span style="color: #ffc107;">&#9670  Custom Forms</span></li>
+												<li><span style="color: #ffc107;">&#9670  Complete Deployment</span></li>
+												<li><span style="color: #ffc107;">&#9670  Web App Integration</span></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 pricing">
+								<div class="row no-gutters align-items-center">
+									<div class="img w-100 js-fullheight d-flex" style="background-image: url({% static 'images/des.jpg' %});">
+										<div class="text p-4 ftco-animate">
+											<h3><br>Web Design</h3>
+											<ul>
+												<li><span style="color: #fff;">&#9670  Aesthetic High End Design</span></li>
+												<li><span style="color: #fff;">&#9670  Complete Functionality</span></li>
+												<li><span style="color: #fff;">&#9670  Unique Graphical Effects</span></li>
+												<li><span style="color: #fff;">&#9670  Stock Photos Included</span></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</section>
+			</div>
+			{%endblock%}
