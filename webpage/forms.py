@@ -1,9 +1,6 @@
 from django import forms
 from django.core import validators
 from webpage.models import Post, Category, Comment
-from webpage.cat import cat_list
-
-
 
 
 class PostForm(forms.ModelForm):
@@ -11,6 +8,12 @@ class PostForm(forms.ModelForm):
     class Meta():
         model=Post
         fields=('title','category','body','post_img')
+
+        cat_choices = Category.objects.all().values_list('name','name')
+        cat_list = []
+
+        for item in cat_choices:
+            cat_list.append(item)
 
         widgets={
             'title':forms.TextInput(attrs={
@@ -22,7 +25,7 @@ class PostForm(forms.ModelForm):
                 'placeholder':'Blog Body',
                 'rows':25
             }),
-            'category':forms.Select(choices=cat_list,attrs={
+            'category':forms.Select(choices=[cat_list],attrs={
                 'class':'form-control',
             }),
         }
